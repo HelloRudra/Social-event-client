@@ -67,6 +67,7 @@ export default function Navbar() {
                 className="menu dropdown-content z-50 mt-3 w-56 rounded-box bg-base-100 p-2 shadow-lg border border-base-300"
               >
                 <li className="menu-title truncate">{user.email}</li>
+                <li><Link href="/profile" onClick={closeMenu}>My Profile</Link></li>
                 <li><Link href="/create-event" onClick={closeMenu}>Create Event</Link></li>
                 <li><Link href="/manage-events" onClick={closeMenu}>Manage Events</Link></li>
                 <li><Link href="/joined-events" onClick={closeMenu}>Joined Events</Link></li>
