@@ -1,7 +1,7 @@
 export default function Home() {
   return (
-    <main className="p-10">
-      <button className="btn btn-primary">DaisyUI works</button>
-    </main>
+    <section className="mx-auto max-w-7xl px-4 py-20">
+      <h1 className="text-4xl font-bold">Home page coming soon</h1>
+    </section>
   );
 }
