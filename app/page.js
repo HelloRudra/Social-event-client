@@ -1,7 +1,17 @@
+import Banner from "@/components/Banner";
+import Features from "@/components/Features";
+import UpcomingEvents from "@/components/UpcomingEvents";
+import Gallery from "@/components/Gallery";
+import Newsletter from "@/components/Newsletter";
+
 export default function Home() {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-20">
-      <h1 className="text-4xl font-bold">Home page coming soon</h1>
-    </section>
+    <>
+      <Banner />
+      <Features />
+      <UpcomingEvents />
+      <Gallery />
+      <Newsletter />
+    </>
   );
 }
