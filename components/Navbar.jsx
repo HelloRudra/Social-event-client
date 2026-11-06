@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { FaHandsHelping } from "react-icons/fa";
+import { FaBars, FaHandsHelping } from "react-icons/fa";
 import { authClient } from "@/lib/auth-client";
 import ThemeToggle from "./ThemeToggle";
 
@@ -22,21 +22,39 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-base-300 bg-base-100/90 backdrop-blur">
-      <div className="navbar mx-auto max-w-7xl px-4">
-        <div className="navbar-start">
-          <Link href="/" className="flex items-center gap-2 text-2xl font-extrabold text-primary">
-            <FaHandsHelping />
+      <div className="navbar mx-auto max-w-7xl gap-1 px-2 sm:px-4">
+        <div className="navbar-start w-auto flex-1 gap-1 lg:flex-none">
+          {/* mobile menu */}
+          <div className="dropdown lg:hidden">
+            <div tabIndex={0} role="button" className="btn btn-ghost btn-square btn-sm" aria-label="Open menu">
+              <FaBars size={18} />
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu dropdown-content z-50 mt-3 w-52 rounded-box border border-base-300 bg-base-100 p-2 shadow-lg"
+            >
+              <li><Link href="/" onClick={closeMenu}>Home</Link></li>
+              <li><Link href="/events" onClick={closeMenu}>Upcoming Events</Link></li>
+            </ul>
+          </div>
+
+          <Link
+            href="/"
+            className="flex items-center gap-2 text-xl font-extrabold text-primary sm:text-2xl"
+          >
+            <FaHandsHelping className="shrink-0" />
             SebaHub
           </Link>
         </div>
 
-        <div className="navbar-center">
+        {/* desktop link */}
+        <div className="navbar-center hidden lg:flex">
           <Link href="/events" className="btn btn-ghost">
             Upcoming Events
           </Link>
         </div>
 
-        <div className="navbar-end gap-1">
+        <div className="navbar-end w-auto shrink-0 gap-1">
           <ThemeToggle />
 
           {isPending ? (
@@ -64,7 +82,7 @@ export default function Navbar() {
               </div>
               <ul
                 tabIndex={0}
-                className="menu dropdown-content z-50 mt-3 w-56 rounded-box bg-base-100 p-2 shadow-lg border border-base-300"
+                className="menu dropdown-content z-50 mt-3 w-56 rounded-box border border-base-300 bg-base-100 p-2 shadow-lg"
               >
                 <li className="menu-title truncate">{user.email}</li>
                 <li><Link href="/profile" onClick={closeMenu}>My Profile</Link></li>
@@ -77,7 +95,7 @@ export default function Navbar() {
               </ul>
             </div>
           ) : (
-            <Link href="/login" className="btn btn-primary">
+            <Link href="/login" className="btn btn-primary btn-sm sm:btn-md">
               Login
             </Link>
           )}
